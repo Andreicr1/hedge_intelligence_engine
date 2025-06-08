@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from uuid import uuid4
 from pathlib import Path
+from typing import Dict, Any
 
 router = APIRouter()
 
@@ -22,7 +23,7 @@ class SimulacaoEstocasticaInput(BaseModel):
     dias: int
     caminhos: int
 
-@router.post("/simular/estocastico/")
+@router.post("/simular/estocastico/", response_model=Dict[str, Any])
 def simular_estocastico(input: SimulacaoEstocasticaInput):
     S0 = input.preco_spot
     Kp = input.strike_put

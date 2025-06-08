@@ -1,14 +1,16 @@
+import { Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import Simulador from "./pages/Simulador"
+import SimuladorEstocastico from "./pages/SimuladorEstocastico"
+import NotFound from "./pages/NotFound"
 
-import React from 'react'
-import Interpretador from './Interpretador'
-
-function App() {
+export default function App() {
   return (
-    <div className="p-4 font-sans">
-      <h1 className="text-2xl font-bold mb-4">Hedge Intelligence Engine</h1>
-      <Interpretador />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/simular" element={<Simulador />} />
+      <Route path="/simular-estocastico" element={<SimuladorEstocastico />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   )
 }
-
-export default App
